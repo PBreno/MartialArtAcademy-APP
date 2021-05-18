@@ -7,7 +7,7 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.martialartacademy.database.DAO.UserDao;
+import com.example.martialartacademy.database.DAO.UserDAO;
 
 public class SingUpActivity extends AppCompatActivity {
 
@@ -23,14 +23,14 @@ public class SingUpActivity extends AppCompatActivity {
 
     private Button maleRadioBtn;
     private Button femaleRadioBtn;
-    private UserDao userDao;
+    private UserDAO userDao;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singup_students);
 
-        userDao = new UserDao(this);
+        userDao = new UserDAO(this);
 
         nameEdit = findViewById(R.id.nameEdit);
         cpfEdit = findViewById(R.id.cpfEdit);

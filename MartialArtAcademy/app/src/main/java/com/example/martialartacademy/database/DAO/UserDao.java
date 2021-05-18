@@ -9,7 +9,7 @@ import com.example.martialartacademy.database.model.UserModel;
 
 import java.util.ArrayList;
 
-public class UserDao extends AbstrataDAO{
+public class UserDAO extends AbstrataDAO{
 
     private String[] columns =
     {
@@ -18,7 +18,7 @@ public class UserDao extends AbstrataDAO{
             UserModel.COLUMN_PASSWORD
     };
 
-    public UserDao(Context context){
+    public UserDAO(Context context){
         db_Helper = new DBHelper(context);
     }
 
