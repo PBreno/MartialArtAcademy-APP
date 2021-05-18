@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MATRICULA"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="50dp"/>
+
+        <EditText
+            android:id="@+id/studentIDEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CODIGO ALUNO"/>
+
+        <EditText
+            android:id="@+id/enrolldataEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="DATA MATRICULA"/>
+
+        <EditText
+            android:id="@+id/expireddateEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="DATA DE VENCIMENTO"/>
+
+        <EditText
+            android:id="@+id/closingdateEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="DATA ENCERRAMENTO"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="320dp">
+
+                <Button
+                    android:id="@+id/backenrollBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VOLTAR"/>
+
+                <Button
+                    android:id="@+id/nextenrollBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PROXIMO"
+                    android:layout_marginLeft="175dp"
+                    android:layout_toRightOf="@+id/backenrollBtn"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

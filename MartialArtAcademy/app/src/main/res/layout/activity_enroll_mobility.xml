@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MATRICULA"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="50dp"/>
+
+        <EditText
+            android:id="@+id/modalityermbEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="MODALIDADE"/>
+
+        <EditText
+            android:id="@+id/graduationermbEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="GRADUAÇÃO"/>
+
+        <EditText
+            android:id="@+id/datestartEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="DATA DE INICIO"/>
+
+        <EditText
+            android:id="@+id/dateendEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="DATA DO FIM"/>
+
+        <EditText
+            android:id="@+id/planEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="PLANO"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="280dp">
+
+                <Button
+                    android:id="@+id/backenrollBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VOLTAR"/>
+
+                <Button
+                    android:id="@+id/nextenrollBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PROXIMO"
+                    android:layout_marginLeft="175dp"
+                    android:layout_toRightOf="@+id/backenrollBtn"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
