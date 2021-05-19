@@ -8,9 +8,10 @@ import com.example.martialartacademy.database.DBHelper;
 import com.example.martialartacademy.database.model.EnrollModel;
 import com.example.martialartacademy.database.model.GraduationModel;
 
+import java.math.BigDecimal;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class EnrollDAO extends AbstrataDAO{
 
@@ -32,12 +33,11 @@ public class EnrollDAO extends AbstrataDAO{
         Open();
 
         ContentValues values = new ContentValues();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         values.put(EnrollModel.COLUMN_STUDENT_Id, enroll.getStudent_id());
-        values.put( EnrollModel.COLUMN_ENROLL_DATE, String.valueOf(dateFormat.format(enroll.getEnroll_date())));
+        values.put( EnrollModel.COLUMN_ENROLL_DATE, String.valueOf(enroll.getEnroll_date()));
         values.put(EnrollModel.COLUMN_EXPIRED_DAY, enroll.getExpired_day());
-        values.put( EnrollModel.COLUMN_CLOSING_DATE, String.valueOf(dateFormat.format(enroll.getClosing_date())));
+        values.put( EnrollModel.COLUMN_CLOSING_DATE, String.valueOf(enroll.getClosing_date()));
 
         long retorno = db.insert(EnrollModel.TABLE_NAME, null, values);
 
@@ -65,12 +65,14 @@ public class EnrollDAO extends AbstrataDAO{
         Close();
         return retorno;
     }
-    public  long Update ( final Integer student_id) {
+    public  long Update ( final Integer student_id, final Date enroll_Date , final Integer expired_day, final Date closing_date) {
 
         Open();
 
         ContentValues values = new ContentValues();
-        values.put(EnrollModel.COLUMN_STUDENT_Id, student_id);
+        values.put(EnrollModel.COLUMN_ENROLL_DATE, String.valueOf(enroll_Date));
+        values.put(EnrollModel.COLUMN_EXPIRED_DAY, expired_day);
+        values.put(EnrollModel.COLUMN_CLOSING_DATE, String.valueOf(closing_date));
 
         long retorno = db.update(EnrollModel.TABLE_NAME,values, EnrollModel.COLUMN_STUDENT_Id + " = ?" ,  new String[]{String.valueOf(student_id)});
 
@@ -78,12 +80,11 @@ public class EnrollDAO extends AbstrataDAO{
         return retorno;
     }
 
-    /*public ArrayList<EnrollModel> SelectAll(){
+    public ArrayList<EnrollModel> SelectAll(){
 
         Open();
 
         ArrayList<EnrollModel> arlgraduation = new ArrayList<EnrollModel>();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         Cursor cursor = db.query(EnrollModel.TABLE_NAME, column, null, null,null,null,null);
 
@@ -93,14 +94,16 @@ public class EnrollDAO extends AbstrataDAO{
             EnrollModel enroll = new EnrollModel();
             enroll.setId(cursor.getLong(cursor.getColumnIndex(EnrollModel.COLUMN_ENROLL_ID)));
             enroll.setStudent_id(cursor.getInt(cursor.getColumnIndex(EnrollModel.COLUMN_STUDENT_Id)));
-            enroll.setEnroll_date(cursor.getString(cursor.getColumnIndex(String.valueOf(dateFormat.format(EnrollModel.COLUMN_ENROLL_DATE)))));
-            enroll.setStudent_id(cursor.getInt(cursor.getColumnIndex(EnrollModel.COLUMN_STUDENT_Id)));
-            arlgraduation.add(graduation);
+            enroll.setEnroll_date(Date.valueOf(cursor.getString(cursor.getColumnIndex(EnrollModel.COLUMN_ENROLL_DATE))));
+            enroll.setExpired_day(cursor.getInt(cursor.getColumnIndex(EnrollModel.COLUMN_EXPIRED_DAY)));
+            enroll.setClosing_date(Date.valueOf(cursor.getString(cursor.getColumnIndex(EnrollModel.COLUMN_CLOSING_DATE))));
+
+            arlgraduation.add(enroll);
 
             cursor.moveToNext();
         }
 
         Close();
         return arlgraduation;
-    }*/
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.martialartacademy.database.model;
 
+import java.math.BigDecimal;
+
 public class PlanModel {
 
     public static final String TABLE_NAME = "tb_plano";
@@ -7,14 +9,14 @@ public class PlanModel {
     public static final String
         COLUMN_MODALITY = "modalidade",
         COLUMN_PLAN = "plano",
-        COLUMN_MONTHYVALUE = "valor_mensal";
+        COLUMN_MONTHLYVALUE = "valor_mensal";
 
     public static final String CREATE_TABLE =
     "create table " + TABLE_NAME
     +"("
     + COLUMN_MODALITY + " text not null ,"
     + COLUMN_PLAN + " text not null ,"
-    + COLUMN_MONTHYVALUE + " decimal, "
+    + COLUMN_MONTHLYVALUE + " decimal, "
     + ");";
 
     public static final String DROP_TABLE =
@@ -22,7 +24,7 @@ public class PlanModel {
 
     private String modality;
     private String plan;
-    private double monthyvalue;
+    private BigDecimal monthlyvalue;
 
     public String getModality() {
         return modality;
@@ -40,11 +42,11 @@ public class PlanModel {
         this.plan = plan;
     }
 
-    public double getMonthyvalue() {
-        return monthyvalue;
+    public BigDecimal getMonthlyvalue() {
+        return monthlyvalue;
     }
 
-    public void setMonthyvalue(double monthyvalue) {
-        this.monthyvalue = monthyvalue;
+    public void setMonthlyvalue(BigDecimal monthyvalue) {
+        this.monthlyvalue = monthyvalue;
     }
 }

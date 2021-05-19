@@ -8,6 +8,7 @@ import com.example.martialartacademy.database.DBHelper;
 import com.example.martialartacademy.database.model.GraduationModel;
 import com.example.martialartacademy.database.model.PlanModel;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 public class PlanDAO extends AbstrataDAO{
@@ -16,7 +17,7 @@ public class PlanDAO extends AbstrataDAO{
     {
             PlanModel.COLUMN_MODALITY,
             PlanModel.COLUMN_PLAN,
-            PlanModel.COLUMN_MONTHYVALUE
+            PlanModel.COLUMN_MONTHLYVALUE
     };
 
     public  PlanDAO (Context context){
@@ -31,7 +32,7 @@ public class PlanDAO extends AbstrataDAO{
 
         values.put(PlanModel.COLUMN_MODALITY, plan.getModality());
         values.put(PlanModel.COLUMN_PLAN, plan.getPlan());
-        values.put(PlanModel.COLUMN_MONTHYVALUE, plan.getMonthyvalue());
+        values.put(PlanModel.COLUMN_MONTHLYVALUE, String.valueOf(plan.getMonthlyvalue()));
 
         long retorno = db.insert(GraduationModel.TABLE_NAME, null, values);
 
@@ -60,12 +61,13 @@ public class PlanDAO extends AbstrataDAO{
         return retorno;
     }
 
-    public  long Update ( final String plan) {
+    public  long Update ( final String plan, final BigDecimal monthlyvalue) {
 
         Open();
 
         ContentValues values = new ContentValues();
         values.put(PlanModel.COLUMN_PLAN, plan);
+        values.put(PlanModel.COLUMN_MONTHLYVALUE, String.valueOf(monthlyvalue));
 
         long retorno = db.update(PlanModel.TABLE_NAME,values, PlanModel.COLUMN_PLAN + " = ?" , new String[]{plan});
 
@@ -87,7 +89,7 @@ public class PlanDAO extends AbstrataDAO{
             PlanModel plan = new PlanModel();
             plan.setModality(cursor.getString(cursor.getColumnIndex(PlanModel.COLUMN_MODALITY)));
             plan.setPlan(cursor.getString(cursor.getColumnIndex(PlanModel.COLUMN_PLAN)));
-            plan.setMonthyvalue(cursor.getDouble(cursor.getColumnIndex(PlanModel.COLUMN_MONTHYVALUE)));
+            plan.setMonthlyvalue(BigDecimal.valueOf(cursor.getDouble(cursor.getColumnIndex(PlanModel.COLUMN_MONTHLYVALUE))));
             arlplan.add(plan);
 
             cursor.moveToNext();
