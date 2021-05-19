@@ -28,7 +28,7 @@
             android:hint="CODIGO ALUNO"/>
 
         <EditText
-            android:id="@+id/enrolldataEdit"
+            android:id="@+id/enrolldateEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="DATA MATRICULA"/>
