@@ -16,7 +16,6 @@ public class SingUpActivity extends AppCompatActivity {
     private EditText birthEdit;
     private EditText emailEdit;
     private EditText phoneEdit;
-    //private EditText emailEdit;
     private EditText usernameEdit;
     private EditText passwordEdit;
     private EditText confirmpswEdit;

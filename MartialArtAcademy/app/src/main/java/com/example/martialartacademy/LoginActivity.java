@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.martialartacademy.database.DAO.UserDAO;
@@ -37,7 +38,14 @@ public class LoginActivity extends AppCompatActivity {
                 if (userDao.Select(userEdit.getText().toString(), passwordEdit.getText().toString()) !=null){
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }else{
-                    Toast.makeText(LoginActivity.this, "Login ou senha incorreto!", Toast.LENGTH_LONG).show();
+
+                    AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
+                    alert.setMessage("Login ou senha incorreto!");
+                    alert.setCancelable(true);
+                    AlertDialog aler = alert.create();
+                    aler.show();
+
+                    //Toast.makeText(LoginActivity.this, "Login ou senha incorreto!", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -46,6 +54,8 @@ public class LoginActivity extends AppCompatActivity {
         singUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                startActivity(new Intent(LoginActivity.this, SingUpActivity.class));
 
             }
         });
