@@ -27,11 +27,17 @@
             android:layout_height="wrap_content"
             android:hint="MODALIDADE"/>
 
+
         <EditText
             android:id="@+id/graduationEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="GRADUAÇÃO"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"

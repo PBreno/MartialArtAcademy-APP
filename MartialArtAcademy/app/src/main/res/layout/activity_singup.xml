@@ -40,12 +40,30 @@
             android:layout_height="wrap_content"
             android:hint="CONFIRMAR SENHA"/>
 
-        <Button
-            android:id="@+id/nextBtn"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="SALVAR"/>
-    </LinearLayout>
+            android:orientation="horizontal">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="280dp">
+
+                <Button
+                    android:id="@+id/backloginBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VOLTAR"/>
+
+                <Button
+                    android:id="@+id/saveBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SALVAR"
+                    android:layout_marginLeft="175dp"
+                    android:layout_toRightOf="@+id/backloginBtn"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

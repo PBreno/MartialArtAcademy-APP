@@ -18,6 +18,12 @@
         </activity>
 
         <activity android:name=".SingupStudentsActivity"/>
+        <activity android:name=".ModalityActivity"/>
+        <activity android:name=".GraduationActivity"/>
+        <activity android:name=".PlanActivity"/>
+        <activity android:name=".EnrollActivity"/>
+        <activity android:name=".EnrollModalityActivity"/>
+        <activity android:name=".SingUpActivity"/>
         <activity android:name=".MainActivity"/>
 </application>
 

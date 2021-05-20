@@ -16,7 +16,7 @@ public class PlanModel {
     +"("
     + COLUMN_MODALITY + " text not null ,"
     + COLUMN_PLAN + " text not null ,"
-    + COLUMN_MONTHLYVALUE + " decimal, "
+    + COLUMN_MONTHLYVALUE + " decimal "
     + ");";
 
     public static final String DROP_TABLE =

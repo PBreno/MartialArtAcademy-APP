@@ -13,7 +13,7 @@ public class StudentModel {
     COLUMN_EMAIL = "email",
     COLUMN_PHONE = "Celular",
     COLUMN_ADDRESS = "endereco",
-    COLUMN_CEP = "endereco";
+    COLUMN_CEP = "cep";
 
 
 

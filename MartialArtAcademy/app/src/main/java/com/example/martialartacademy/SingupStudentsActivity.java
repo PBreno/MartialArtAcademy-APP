@@ -1,5 +1,6 @@
 package com.example.martialartacademy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.martialartacademy.database.DAO.StudentDAO;
 import com.example.martialartacademy.database.DAO.UserDAO;
 import com.example.martialartacademy.database.model.StudentModel;
 import com.example.martialartacademy.database.model.UserModel;
@@ -29,14 +31,16 @@ public class SingupStudentsActivity extends AppCompatActivity {
     private RadioButton maleRadioBtn;
     private RadioButton femaleRadioBtn;
     private Button nextStudentBtn;
-    private UserDAO userDao;
+    private StudentDAO studentDao;
+    private StudentModel student;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_singup_students);
 
-        userDao = new UserDAO(this);
+        studentDao = new StudentDAO(this);
+        student = new StudentModel();
 
         nameEdit = findViewById(R.id.nameEdit);
         cpfEdit = findViewById(R.id.cpfEdit);
@@ -50,9 +54,9 @@ public class SingupStudentsActivity extends AppCompatActivity {
         maleRadioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String male = null;
 
-
+                femaleRadioBtn.setFocusable(false);
+                student.setGender("Masculino");
             }
         });
 
@@ -61,6 +65,8 @@ public class SingupStudentsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                maleRadioBtn.setFocusable(false);
+                student.setGender("Feminino");
             }
         });
 
@@ -69,30 +75,33 @@ public class SingupStudentsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                StudentModel user = new StudentModel();
-
-                if (cpfEdit.getText().length()<11){
+                if (cpfEdit.getText().length()!=11){
 
                     AlertDialog.Builder alert = new AlertDialog.Builder(SingupStudentsActivity.this);
-                    alert.setMessage("Login ou senha incorreto!");
+                    alert.setMessage("CPF inválido!");
                     alert.setCancelable(true);
-                    AlertDialog showaler = alert.create();
-                    showaler.show();
+                    AlertDialog showAlert = alert.create();
+                    showAlert.show();
 
                 }
                 /*if (((nameEdit.getText().toString() && cpfEdit.getText().toString()) == null ){
 
                 }*/
 
-                user.setName(nameEdit.getText().toString());
-                user.setCpf(cpfEdit.getText().toString());
-                user.setBirth(birthEdit.getText().toString());
-                user.setEmail(emailEdit.getText().toString());
-                user.setPhone(phoneEdit.getText().toString());
-                user.setAddress(addressEdit.getText().toString());
-                user.setCep(cepEdit.getText().toString());
+                student.setName(nameEdit.getText().toString());
+                student.setCpf(cpfEdit.getText().toString());
+                student.setBirth(birthEdit.getText().toString());
+                student.getGender();
+                student.setEmail(emailEdit.getText().toString());
+                student.setPhone(phoneEdit.getText().toString());
+                student.setAddress(addressEdit.getText().toString());
+                student.setCep(cepEdit.getText().toString());
+
+                //studentDao.Insert(student);
 
                 Toast.makeText(SingupStudentsActivity.this, "Saved!", Toast.LENGTH_LONG).show();
+
+                startActivity(new Intent(SingupStudentsActivity.this, ModalityActivity.class));
             }
         });
 

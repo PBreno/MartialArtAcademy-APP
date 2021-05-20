@@ -62,18 +62,18 @@
                 android:layout_marginTop="280dp">
 
                 <Button
-                    android:id="@+id/backenrollBtn"
+                    android:id="@+id/backenrollmdtBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="VOLTAR"/>
 
                 <Button
-                    android:id="@+id/nextenrollBtn"
+                    android:id="@+id/nextenrollmdtBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="PROXIMO"
                     android:layout_marginLeft="175dp"
-                    android:layout_toRightOf="@+id/backenrollBtn"/>
+                    android:layout_toRightOf="@+id/backenrollmdtBtn"/>
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

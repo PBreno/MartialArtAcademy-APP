@@ -1,27 +1,25 @@
 package com.example.martialartacademy;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.martialartacademy.database.DAO.UserDAO;
+import com.example.martialartacademy.database.model.UserModel;
 
 public class SingUpActivity extends AppCompatActivity {
 
-    private EditText nameEdit;
-    private EditText cpfEdit;
-    private EditText birthEdit;
-    private EditText emailEdit;
-    private EditText phoneEdit;
     private EditText usernameEdit;
     private EditText passwordEdit;
     private EditText confirmpswEdit;
 
-    private Button maleRadioBtn;
-    private Button femaleRadioBtn;
+    private Button saveBtn;
+    private Button backloginBtn;
     private UserDAO userDao;
 
     @Override
@@ -31,14 +29,46 @@ public class SingUpActivity extends AppCompatActivity {
 
         userDao = new UserDAO(this);
 
-        nameEdit = findViewById(R.id.nameEdit);
-        cpfEdit = findViewById(R.id.cpfEdit);
-        birthEdit = findViewById(R.id.birthEdit);
-        emailEdit = findViewById(R.id.emailEdit);
-        phoneEdit = findViewById(R.id.phoneEdit);
         usernameEdit = findViewById(R.id.usernameEdit);
         passwordEdit = findViewById(R.id.passwordEdit);
         confirmpswEdit = findViewById(R.id.confirmpswEdit);
 
+        backloginBtn = findViewById(R.id.backloginBtn);
+        backloginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        saveBtn= findViewById(R.id.saveBtn);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (passwordEdit.getText().toString().equals(confirmpswEdit.getText().toString())){
+
+                    UserModel user = new UserModel();
+
+                    user.setNm_user(usernameEdit.getText().toString());
+                    user.setDs_password(passwordEdit.getText().toString());
+
+                    if (userDao.Insert(user) > 0){
+                        finish();
+                    }
+
+                }
+                else{
+
+                    AlertDialog.Builder alert = new AlertDialog.Builder(SingUpActivity.this);
+                    alert.setMessage("As senhas têm que ser iguais!");
+                    alert.setCancelable(true);
+                    AlertDialog aler = alert.create();
+                    aler.show();
+
+                }
+
+            }
+        });
     }
 }
