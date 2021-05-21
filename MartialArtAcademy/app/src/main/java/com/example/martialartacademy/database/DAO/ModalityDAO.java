@@ -90,4 +90,24 @@ public class ModalityDAO extends AbstrataDAO{
         Close();
         return arlmodality;
     }
+
+    public ModalityModel Select (final  String modality){
+
+        Open();
+
+        ModalityModel md = null;
+        Cursor cursor = db.query(ModalityModel.TABLE_NAME,column, ModalityModel.COLUMN_MODALITY + " = ? ", new String[] {modality} , null, null, null);
+        cursor.moveToNext();
+
+        if (cursor.moveToFirst()){
+            md = new ModalityModel();
+            md.setMobility(cursor.getString(cursor.getColumnIndex(ModalityModel.COLUMN_MODALITY)));
+
+        }
+        cursor.close();
+
+        Close();
+
+        return md;
+    }
 }

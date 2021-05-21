@@ -12,19 +12,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="20dp">
 
-        <EditText
-            android:id="@+id/testEdit"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="TextBro"/>
+            android:text="DASHBOARD"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="50dp"/>
 
-        <Button
-            android:id="@+id/inserirBtn"
+        <ListView
+            android:id="@+id/List"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Inserir"/>
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 </LinearLayout>

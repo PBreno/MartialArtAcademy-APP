@@ -84,24 +84,35 @@ public class SingupStudentsActivity extends AppCompatActivity {
                     showAlert.show();
 
                 }
-                /*if (((nameEdit.getText().toString() && cpfEdit.getText().toString()) == null ){
+                else if (((nameEdit.getText().toString()== null) || (cpfEdit.getText().toString() == null)
+                            || (birthEdit.getText().toString() == null) || (emailEdit.getText().toString() == null)
+                                ||(phoneEdit.getText().toString() == null) || (addressEdit.getText().toString() == null)
+                                    ||(cepEdit.getText().toString() ==null) ) ){
 
-                }*/
+                    AlertDialog.Builder alert = new AlertDialog.Builder(SingupStudentsActivity.this);
+                    alert.setMessage("Prencher todos os campos!");
+                    alert.setCancelable(true);
+                    AlertDialog showAlert = alert.create();
+                    showAlert.show();
 
-                student.setName(nameEdit.getText().toString());
-                student.setCpf(cpfEdit.getText().toString());
-                student.setBirth(birthEdit.getText().toString());
-                student.getGender();
-                student.setEmail(emailEdit.getText().toString());
-                student.setPhone(phoneEdit.getText().toString());
-                student.setAddress(addressEdit.getText().toString());
-                student.setCep(cepEdit.getText().toString());
+                }
+                else{
 
-                //studentDao.Insert(student);
+                    student.setName(nameEdit.getText().toString());
+                    student.setCpf(cpfEdit.getText().toString());
+                    student.setBirth(birthEdit.getText().toString());
+                    student.getGender();
+                    student.setEmail(emailEdit.getText().toString());
+                    student.setPhone(phoneEdit.getText().toString());
+                    student.setAddress(addressEdit.getText().toString());
+                    student.setCep(cepEdit.getText().toString());
 
-                Toast.makeText(SingupStudentsActivity.this, "Saved!", Toast.LENGTH_LONG).show();
+                    studentDao.Insert(student);
+                    Toast.makeText(SingupStudentsActivity.this, "Saved!", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(SingupStudentsActivity.this, ModalityActivity.class));
 
-                startActivity(new Intent(SingupStudentsActivity.this, ModalityActivity.class));
+                 
+                }
             }
         });
 

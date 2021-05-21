@@ -93,4 +93,24 @@ public class GraduationDAO extends AbstrataDAO{
         return arlgraduation;
     }
 
+    public GraduationModel Select (final  String graduation){
+
+        Open();
+
+        GraduationModel grad = null;
+        Cursor cursor = db.query(GraduationModel.TABLE_NAME,column, GraduationModel.COLUMN_GRADUATION + " = ? ", new String[] {graduation} , null, null, null);
+        cursor.moveToNext();
+
+        if (cursor.moveToFirst()){
+            grad = new GraduationModel();
+            grad.setGraduation(cursor.getString(cursor.getColumnIndex(GraduationModel.COLUMN_GRADUATION)));
+
+        }
+        cursor.close();
+
+        Close();
+
+        return grad;
+    }
+
 }
